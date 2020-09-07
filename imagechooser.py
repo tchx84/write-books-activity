@@ -136,7 +136,7 @@ class ImageFileChooser(Gtk.Window):
         # with the categories, when the user press a button,
         # load the images in the catgories path
         self._buttons_vbox = Gtk.VBox()
-        for category in self._categories.keys():
+        for category in list(self._categories.keys()):
             button = Gtk.Button(category)
             button.connect('clicked', self.__category_btn_clicked_cb,
                            category)

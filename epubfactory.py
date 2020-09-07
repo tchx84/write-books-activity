@@ -386,7 +386,7 @@ class EpubFactory():
 
     def _scan_dir(self, path, epub_file):
         for p in os.listdir(path):
-            print "P", p
+            print("P", p)
             if os.path.isdir(os.path.join(path, p)):
                 self._scan_dir(os.path.join(path, p), epub_file)
             else:
