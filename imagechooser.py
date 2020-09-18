@@ -21,7 +21,6 @@ import os
 from gi.repository import GObject
 from gi.repository import Gtk
 from gi.repository import Gdk
-from gi.repository import Wnck
 
 from sugar3.graphics import style
 from sugar3.graphics.toolbutton import ToolButton
@@ -76,11 +75,6 @@ class ImageFileChooser(Gtk.Window):
 
         if parent is None:
             logging.warning('ObjectChooser: No parent window specified')
-        else:
-            self.connect('realize', self.__realize_cb, parent)
-
-            screen = Wnck.Screen.get_default()
-            screen.connect('window-closed', self.__window_closed_cb, parent)
 
         self._vbox = Gtk.VBox()
         self.add(self._vbox)
@@ -136,7 +130,7 @@ class ImageFileChooser(Gtk.Window):
         # with the categories, when the user press a button,
         # load the images in the catgories path
         self._buttons_vbox = Gtk.VBox()
-        for category in self._categories.keys():
+        for category in list(self._categories.keys()):
             button = Gtk.Button(category)
             button.connect('clicked', self.__category_btn_clicked_cb,
                            category)

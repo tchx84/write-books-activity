@@ -75,7 +75,7 @@ class PreviewPanel(Gtk.VBox):
         success, path, renderer = self._icon_view.get_cursor()
         if success:
             if delta == 1:
-                path.next()
+                next(path)
             else:
                 path.prev()
             self._icon_view.disconnect(self._item_activated_id)
